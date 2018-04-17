@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    xmlns:skin="http://schemas.android.com/android/skin"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,13 +21,12 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:titleTextColor="#ffffff" />
 
-        <android.support.design.widget.TabLayout xmlns:skin="http://schemas.android.com/android/skin"
+        <android.support.design.widget.TabLayout
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
             app:tabGravity="fill"
-            app:tabSelectedTextColor="#a8a7ab"
+            app:tabSelectedTextColor="@color/colorPrimaryDark"
             app:tabTextColor="#ffffff"
             skin:enable="true" />
 
@@ -39,6 +38,15 @@
 
         </android.support.v4.view.ViewPager>
 
+        <Button
+            android:id="@+id/btn_launch_my_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_button"
+            android:onClick="launchMyTest"
+            android:text="@string/launch_mytestactivity"
+            android:textAllCaps="false" />
 
     </LinearLayout>
+
 </android.support.design.widget.CoordinatorLayout>

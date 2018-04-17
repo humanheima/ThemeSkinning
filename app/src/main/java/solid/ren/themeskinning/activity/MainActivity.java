@@ -11,9 +11,12 @@ import android.view.View;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import solid.ren.skinlibrary.SkinLoaderListener;
+import solid.ren.skinlibrary.attr.base.DynamicAttr;
 import solid.ren.skinlibrary.base.SkinBaseActivity;
 import solid.ren.skinlibrary.loader.SkinManager;
 import solid.ren.themeskinning.DataProvider;
@@ -40,13 +43,15 @@ public class MainActivity extends SkinBaseActivity {
         for (int i = 0; i < DataProvider.getTitleList().size(); i++) {
             tablayout.addTab(tablayout.newTab().setText(DataProvider.getTitleList().get(i)));
         }
-        dynamicAddView(tablayout, "tabLayoutIndicator", R.color.colorPrimaryDark);
-
-
+        //dynamicAddView(tablayout, "tabLayoutIndicator", R.color.colorPrimaryDark);
+        //dynamicAddView(tablayout, "tabLayoutIndicator", R.color.colorPrimaryDark);
+        List<DynamicAttr> attrList = new ArrayList<>(2);
+        attrList.add(new DynamicAttr("tabLayoutIndicator",R.color.colorPrimaryDark));
+        attrList.add(new DynamicAttr("tabSelectedTextColor",R.color.colorPrimaryDark));
+        dynamicAddView(tablayout,attrList);
         ViewPager viewpager = findViewById(R.id.viewpager);
         viewpager.setAdapter(new TabViewpagerAdapter(getSupportFragmentManager(), DataProvider.getTitleList()));
         tablayout.setupWithViewPager(viewpager);
-
 
     }
 
@@ -120,6 +125,34 @@ public class MainActivity extends SkinBaseActivity {
 
                 );
                 break;
+            case R.id.action_load_local3:
+                SkinManager.getInstance().loadSkin("theme-20180417.skin",
+                        new SkinLoaderListener() {
+                            @Override
+                            public void onStart() {
+                                Log.i("SkinLoaderListener", "正在切换中");
+                                //dialog.show();
+                            }
+
+                            @Override
+                            public void onSuccess() {
+                                Log.i("SkinLoaderListener", "切换成功");
+                            }
+
+                            @Override
+                            public void onFailed(String errMsg) {
+                                Log.i("SkinLoaderListener", "切换失败:" + errMsg);
+                            }
+
+                            @Override
+                            public void onProgress(int progress) {
+                                Log.i("SkinLoaderListener", "皮肤文件下载中:" + progress);
+
+                            }
+                        }
+
+                );
+                break;
             case R.id.action_night_mode:
                 SkinManager.getInstance().nightMode();
                 break;
@@ -144,5 +177,9 @@ public class MainActivity extends SkinBaseActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void launchMyTest(View view) {
+        MyTestActivity.launch(this);
     }
 }

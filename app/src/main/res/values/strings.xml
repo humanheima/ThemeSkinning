@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ThemeSkinning</string>
+    <string name="test_text_color">test text color</string>
+    <string name="launch_mytestactivity">launch MyTestActivity</string>
 </resources>

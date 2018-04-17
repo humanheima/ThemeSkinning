@@ -76,6 +76,10 @@ public class SkinManager implements ISkinLoader {
         }
     }
 
+    /**
+     * 复制 assets文件夹下的皮肤到指定的目录
+     * @param context
+     */
     private void setUpSkinFile(Context context) {
         try {
             String[] skinFiles = context.getAssets().list(SkinConfig.SKIN_DIR_NAME);

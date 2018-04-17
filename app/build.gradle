@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "solid.ren.themeskinning"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -41,4 +41,5 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    compile 'com.xw.repo:bubbleseekbar:3.17-lite'
 }

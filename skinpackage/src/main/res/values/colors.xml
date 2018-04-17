@@ -21,4 +21,7 @@
     <!--<color name="item_tv_title_color">#2c3cf0</color>-->
     <!--<color name="item_tv_content_color">#47a094</color>-->
     <!--<color name="item_tv_date_color">#e6b918</color>-->
+
+    <color name="text_color_black">#1b75c0</color>
+
 </resources>

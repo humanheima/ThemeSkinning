@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MyTestActivity">
+
+    <TextView
+        android:id="@+id/tv_text_color"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="@string/test_text_color"
+        android:textAllCaps="false"
+        android:textColor="@color/text_color_black" />
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:src="@drawable/ic_homepage_car" />
+
+    <com.xw.repo.BubbleSeekBar
+        android:id="@+id/bubble_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        app:bsb_is_float_type="true"
+        app:bsb_max="10"
+        app:bsb_thumb_color="@color/colorPrimary"
+        app:bsb_min="0.5" />
+
+</LinearLayout>

@@ -15,4 +15,5 @@
     <color name="text_color_press">#6c6b6b</color>
 
     <color name="item_tv_title_background">#303F9F</color>
+    <color name="text_color_black">#000000</color>
 </resources>

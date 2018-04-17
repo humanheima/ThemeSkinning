@@ -21,6 +21,12 @@
         app:showAsAction="never"
         tools:ignore="HardcodedText" />
     <item
+        android:id="@+id/action_load_local3"
+        android:orderInCategory="101"
+        android:title="加载本地皮肤包3"
+        app:showAsAction="never"
+        tools:ignore="HardcodedText" />
+    <item
         android:id="@+id/action_night_mode"
         android:orderInCategory="101"
         android:title="夜间模式"
