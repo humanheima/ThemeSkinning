@@ -15,7 +15,7 @@ import solid.ren.skinlibrary.utils.TypefaceUtils;
  * Created by _SOLID
  * Date:2016/7/12
  * Time:17:58
- * Desc:
+ * Desc: 用来给TextView设置字体
  */
 class TextViewRepository {
     private static Map<String, List<TextView>> mTextViewMap = new HashMap<>();

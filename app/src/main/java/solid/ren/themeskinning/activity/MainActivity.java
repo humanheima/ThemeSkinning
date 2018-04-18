@@ -25,7 +25,6 @@ import solid.ren.themeskinning.adapter.TabViewpagerAdapter;
 
 public class MainActivity extends SkinBaseActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,18 +36,16 @@ public class MainActivity extends SkinBaseActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("我是Toolbar");
         setSupportActionBar(toolbar);
-        dynamicAddView(toolbar, "background", R.color.colorPrimaryDark);
+        //dynamicAddView(toolbar, "background", R.color.colorPrimaryDark);
 
         TabLayout tablayout = findViewById(R.id.tablayout);
         for (int i = 0; i < DataProvider.getTitleList().size(); i++) {
             tablayout.addTab(tablayout.newTab().setText(DataProvider.getTitleList().get(i)));
         }
-        //dynamicAddView(tablayout, "tabLayoutIndicator", R.color.colorPrimaryDark);
-        //dynamicAddView(tablayout, "tabLayoutIndicator", R.color.colorPrimaryDark);
-        List<DynamicAttr> attrList = new ArrayList<>(2);
-        attrList.add(new DynamicAttr("tabLayoutIndicator",R.color.colorPrimaryDark));
-        attrList.add(new DynamicAttr("tabSelectedTextColor",R.color.colorPrimaryDark));
-        dynamicAddView(tablayout,attrList);
+        /*List<DynamicAttr> attrList = new ArrayList<>(2);
+        attrList.add(new DynamicAttr("tabLayoutIndicator", R.color.colorPrimaryDark));
+        attrList.add(new DynamicAttr("tabSelectedTextColor", R.color.colorPrimaryDark));
+        dynamicAddView(tablayout, attrList);*/
         ViewPager viewpager = findViewById(R.id.viewpager);
         viewpager.setAdapter(new TabViewpagerAdapter(getSupportFragmentManager(), DataProvider.getTitleList()));
         tablayout.setupWithViewPager(viewpager);
