@@ -19,6 +19,10 @@ public class App extends SkinBaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return;
+        }
+        LeakCanary.install(this);
         SkinConfig.setCanChangeStatusColor(true);
         SkinConfig.setCanChangeFont(true);
         SkinConfig.setDebug(true);
@@ -28,7 +32,5 @@ public class App extends SkinBaseApplication {
         SkinConfig.addSupportAttr("bsb_thumb_color", new BsbThumbColorAttr());
         SkinConfig.addSupportAttr("bsb_track_color", new BsbTrackColorAttr());
         SkinConfig.enableGlobalSkinApply();
-
-        LeakCanary.install(this);
     }
 }
