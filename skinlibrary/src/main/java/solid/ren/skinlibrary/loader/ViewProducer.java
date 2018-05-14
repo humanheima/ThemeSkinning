@@ -57,8 +57,7 @@ class ViewProducer {
         }
     }
 
-    private static View createView(Context context, String name, String prefix)
-            throws ClassNotFoundException, InflateException {
+    private static View createView(Context context, String name, String prefix) throws InflateException {
         Constructor<? extends View> constructor = sConstructorMap.get(name);
 
         try {

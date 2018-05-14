@@ -123,11 +123,16 @@ public class SkinManager implements ISkinLoader {
                 try {
                     if (params.length == 1) {
                         String skinPkgPath = SkinFileUtils.getSkinDir(context) + File.separator + params[0];
+                        // skinPackagePath:/storage/emulated/0/Android/data/solid.ren.themeskinning/cache/skin/theme-20180417.skin
                         SkinL.i(TAG, "skinPackagePath:" + skinPkgPath);
                         File file = new File(skinPkgPath);
                         if (!file.exists()) {
                             return null;
                         }
+                        /**
+                         * 把路径在/storage/emulated/0/Android/data/solid.ren.themeskinning/cache/skin/xxx.skin
+                         * 的文件作为asset的一部分
+                         */
                         PackageManager mPm = context.getPackageManager();
                         PackageInfo mInfo = mPm.getPackageArchiveInfo(skinPkgPath, PackageManager.GET_ACTIVITIES);
                         skinPackageName = mInfo.packageName;
@@ -135,7 +140,9 @@ public class SkinManager implements ISkinLoader {
                         Method addAssetPath = assetManager.getClass().getMethod("addAssetPath", String.class);
                         addAssetPath.invoke(assetManager, skinPkgPath);
 
-
+                        /**
+                         * 根据asset来获取Resources
+                         */
                         Resources superRes = context.getResources();
                         Resources skinResource = ResourcesCompat.getResources(assetManager, superRes.getDisplayMetrics(), superRes.getConfiguration());
                         SkinConfig.saveSkinPath(context, params[0]);

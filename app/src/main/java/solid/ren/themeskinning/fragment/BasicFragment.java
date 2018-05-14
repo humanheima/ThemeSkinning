@@ -4,20 +4,19 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import solid.ren.skinlibrary.SkinLoaderListener;
 import solid.ren.skinlibrary.base.SkinBaseFragment;
-import solid.ren.skinlibrary.loader.SkinManager;
+import solid.ren.themeskinning.App;
 import solid.ren.themeskinning.DataBean;
 import solid.ren.themeskinning.R;
 import solid.ren.themeskinning.activity.SecondActivity;
@@ -69,5 +68,12 @@ public class BasicFragment extends SkinBaseFragment {
             list.add(bean);
         }
         return list;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RefWatcher refWatcher = App.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 }
