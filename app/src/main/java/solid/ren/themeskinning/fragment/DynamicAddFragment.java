@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import com.squareup.leakcanary.RefWatcher;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import solid.ren.skinlibrary.attr.base.DynamicAttr;
 import solid.ren.skinlibrary.base.SkinBaseFragment;
 import solid.ren.themeskinning.App;
 import solid.ren.themeskinning.R;
@@ -39,6 +43,10 @@ public class DynamicAddFragment extends SkinBaseFragment {
         imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         dynamicAddView(imageView, "background", R.mipmap.mipmap_img);
         ll_dynamic_view.addView(imageView);
+
+        List<DynamicAttr> attrList = new ArrayList<>(2);
+        attrList.add(new DynamicAttr("textColor", R.color.item_tv_title_color));
+        attrList.add(new DynamicAttr("background", R.color.item_tv_title_background));
         for (int i = 0; i < 10; i++) {
             TextView textView1 = new TextView(getContext());
             textView1.setText("我是动态创建的TextView" + i + ",我也可以换肤");
@@ -46,7 +54,7 @@ public class DynamicAddFragment extends SkinBaseFragment {
             ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params.setMargins(20, 20, 20, 20);
             textView1.setLayoutParams(params);
-            dynamicAddView(textView1, "textColor", R.color.item_tv_title_color);
+            dynamicAddView(textView1, attrList);
             ll_dynamic_view.addView(textView1);
             dynamicAddFontView(textView1);
         }

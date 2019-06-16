@@ -23,8 +23,6 @@ import solid.ren.skinlibrary.attr.base.SkinAttr;
 import solid.ren.skinlibrary.utils.SkinL;
 import solid.ren.skinlibrary.utils.SkinListUtils;
 
-import static android.R.attr.textColor;
-
 /**
  * Created by _SOLID
  * Date:2016/4/13
@@ -87,10 +85,15 @@ public class SkinInflaterFactory implements LayoutInflater.Factory2 {
             //region  style
             //style theme
             if ("style".equals(attrName)) {
-                int[] skinAttrs = new int[]{android.R.attr.textColor, android.R.attr.background};
+                int[] skinAttrs = new int[]{
+                        android.R.attr.textColor,
+                        android.R.attr.background,
+                        android.R.attr.src
+                };
                 TypedArray a = context.getTheme().obtainStyledAttributes(attrs, skinAttrs, 0, 0);
                 int textColorId = a.getResourceId(0, -1);
                 int backgroundId = a.getResourceId(1, -1);
+                int srcId = a.getResourceId(2, -1);
                 if (textColorId != -1) {
                     String entryName = context.getResources().getResourceEntryName(textColorId);
                     String typeName = context.getResources().getResourceTypeName(textColorId);
@@ -120,6 +123,21 @@ public class SkinInflaterFactory implements LayoutInflater.Factory2 {
                     }
 
                 }
+                if (srcId != -1) {
+                    String entryName = context.getResources().getResourceEntryName(srcId);
+                    String typeName = context.getResources().getResourceTypeName(srcId);
+                    SkinAttr skinAttr = AttrFactory.get("src", srcId, entryName, typeName);
+                    SkinL.w(TAG, "    srcId in style is supported:" + "\n" +
+                            "    resource id:" + backgroundId + "\n" +
+                            "    attrName:" + attrName + "\n" +
+                            "    attrValue:" + attrValue + "\n" +
+                            "    entryName:" + entryName + "\n" +
+                            "    typeName:" + typeName);
+                    if (skinAttr != null) {
+                        viewAttrs.add(skinAttr);
+                    }
+
+                }
                 a.recycle();
                 continue;
             }
@@ -127,7 +145,7 @@ public class SkinInflaterFactory implements LayoutInflater.Factory2 {
             //if attrValue is reference，eg:@color/red
             if (AttrFactory.isSupportedAttr(attrName) && attrValue.startsWith("@")) {
                 try {
-                    //resource id
+                    //获取resource id，去掉开头的"@"
                     int id = Integer.parseInt(attrValue.substring(1));
                     if (id == 0) {
                         continue;

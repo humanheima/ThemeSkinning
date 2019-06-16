@@ -45,4 +45,6 @@ public class App extends SkinBaseApplication {
         App leakApplication = (App) context.getApplicationContext();
         return leakApplication.refWatcher;
     }
+
+
 }

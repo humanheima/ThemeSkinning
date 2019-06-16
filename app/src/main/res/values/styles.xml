@@ -20,6 +20,13 @@
         <item name="android:textColor">@color/item_tv_title_color</item>
         <item name="android:background">@color/item_tv_title_background</item>
         <item name="android:textSize">18sp</item>
+
+
+    </style>
+
+    <style name="ImageViewStyle">
+        <!--<item name="android:background">@drawable/ic_homepage_car</item>-->
+        <item name="android:src">@drawable/ic_homepage_car</item>
     </style>
 
 </resources>

@@ -20,9 +20,10 @@
 
     <ImageView
         android:id="@+id/iv"
+        style="@style/ImageViewStyle"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:src="@drawable/ic_homepage_car" />
+        android:src="@drawable/ic_homepage_car"
+        android:layout_height="160dp" />
 
     <com.xw.repo.BubbleSeekBar
         android:id="@+id/bubble_seek_bar"
@@ -30,8 +31,8 @@
         android:layout_height="8dp"
         app:bsb_is_float_type="true"
         app:bsb_max="10"
-        app:bsb_track_color="@color/text_color_normal"
+        app:bsb_min="0.5"
         app:bsb_thumb_color="@color/colorPrimary"
-        app:bsb_min="0.5" />
+        app:bsb_track_color="@color/text_color_normal" />
 
 </LinearLayout>
